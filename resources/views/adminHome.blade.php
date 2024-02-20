@@ -6,7 +6,11 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>
-
+                <a href="{{ route('user.index') }}">Manajemen Pengguna</a>
+                <a href="{{ route('sbtype.index') }}">Manajemen Tipe Sleeping Bag</a>
+                <a href="{{ route('sbpattern.index') }}">Manajemen Pola Sleeping Bag</a>
+                <a href="{{ route('sbsize.index') }}">Manajemen Ukuran Sleeping Bag</a>
+                <a href="{{ route('sbfillw.index') }}">Manajemen Berat Isian Sleeping Bag</a>
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
