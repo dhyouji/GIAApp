@@ -7,6 +7,7 @@
             <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>
                 <a href="{{ route('user.index') }}">Manajemen Pengguna</a>
+                <a href="{{ route('customer.index') }}">Manajemen Pelanggan</a>
                 <a href="{{ route('sbtype.index') }}">Manajemen Tipe Sleeping Bag</a>
                 <a href="{{ route('sbpattern.index') }}">Manajemen Pola Sleeping Bag</a>
                 <a href="{{ route('sbsize.index') }}">Manajemen Ukuran Sleeping Bag</a>

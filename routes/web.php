@@ -8,6 +8,7 @@ use App\Http\Controllers\SbsizeController;
 use App\Http\Controllers\SbpatternController;
 use App\Http\Controllers\SbfillwController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CustomerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::group(['middleware' => ['user-access:1','user-access:1'] ], function(){
     Route::resources([
         'user' => UserController::class,
+        'customer' => CustomerController::class,
         'sbtype' => SbtypeController::class,
         'sbsize' => SbsizeController::class,
         'sbpattern' => SbpatternController::class,
