@@ -12,6 +12,8 @@
                 <a href="{{ route('sbpattern.index') }}">Manajemen Pola Sleeping Bag</a>
                 <a href="{{ route('sbsize.index') }}">Manajemen Ukuran Sleeping Bag</a>
                 <a href="{{ route('sbfillw.index') }}">Manajemen Berat Isian Sleeping Bag</a>
+                <a href="{{ route('preorder.index') }}">Manajemen Preorder</a>
+                <a href="{{ route('prod.index') }}">Manajemen Produksi</a>
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">

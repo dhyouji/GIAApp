@@ -1,0 +1,74 @@
+@extends('app')
+@section('title', 'Add Customer')
+@section('content')
+<form method="post" action="{{ route('preorder.store') }}" enctype="multipart/form-data">
+  <div class="form-group flex-center">
+    <table class="table" id="example1" width="100%" cellspacing="0">
+      <tr>
+        <td>Seri</td>
+        <td><select name="in_series">
+        @php
+          $data_srs = DB::table('series')->orderBy('key_series','desc')->get();
+        @endphp
+          @foreach ($data_srs as $row)
+          <option value="$row->key_series">{{$row->name}}</option>
+          @endforeach{{-- 
+          <option value="Mummy">Mummy</option>
+          <option value="CMummy">Center Zip</option>
+          <option value="Kelty">Kelty</option>
+          <option value="KSB">KSB</option>
+          <option value="Quilt">Quilt</option>
+          <option value="Tikar">Tikar</option>
+          <option value="King">King</option> --}}
+        </select>
+      </td>
+      </tr>
+      <tr>
+        <td>Kain Inner</td><td><input type="text" class="form-control" name="in_alamat"></td>
+      </tr>
+      <tr>
+        <td>Kain Outer</td><td><input type="text" class="form-control" name="in_kontak"></td>
+      </tr>
+      <tr>
+        <td>Pola</td>
+        <td>
+          <select name="in_pattern">
+            <option value="S">Standar</option>
+            <option value="V">Pola V</option>
+            <option value="YY">Yin Yang</option>
+            <option value="AM">Adu Manis</option>
+            <option value="1000">Diagonal</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Berat Isian</td>
+        <td>
+          <select name="in_fweight">
+            <option value="300">Ultralight</option>
+            <option value="400">Lightweight</option>
+            <option value="500">Moderate</option>
+            <option value="700">Weight</option>
+            <option value="1000">Extreme</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Size</td><td>
+        {{Form::select('in_size', ['L' => 'Large', 'S' => 'Small']);}}</td>
+      </tr>
+      <tr>
+        <td>Note</td><td><input type="text" class="form-control" name="in_kontak"></td>
+      </tr>
+    </table>
+  </div>
+  <div>
+    <center>
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="reset" class="btn btn-warning">Reset</button>
+      <button type="button"class="btn btn-danger" onclick="window.location.href='{{route('preorder.index')}}'">Back</button>
+    </center>
+  </div>
+  @csrf
+</form>
+@endsection
