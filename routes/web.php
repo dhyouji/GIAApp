@@ -35,7 +35,7 @@ Route::post('preorder/postcreate1', [App\Http\Controllers\PreorderController::cl
 Route::post('preorder/postcreate2', [App\Http\Controllers\PreorderController::class, 'postcreate2'])->name('preorder.postcreate2')->middleware('web');
 Route::post('preorder/postcreate3', [App\Http\Controllers\PreorderController::class, 'postcreate3'])->name('preorder.postcreate3')->middleware('web');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::group(['middleware' => ['user-access:1','user-access:1'] ], function(){
+Route::group(['middleware' => ['user-access:1.2'] ], function(){
     Route::resources([
         'user' => UserController::class,
         'customer' => CustomerController::class,
