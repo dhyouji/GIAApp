@@ -46,7 +46,12 @@ class HomeController extends Controller
             $data['row1'] = Production::where('status', 1)->get();
             return view('adminHome', $data);
         } elseif ($type == "0") {
-            return view('Home');
+            $data['q'] = $request->q;
+            $data['row1'] = Production::Where('status', 1)
+                ->orWhere('preorder',  'like', '%' . $request->q . '%')
+                ->orWhere('note',  'like', '%' . $request->q . '%')
+                ->orWhere('datetime',  'like', '%' . $request->q . '%')->get();
+            return view('userHome', $data);
         } else {
             return view('welcome');
         }
