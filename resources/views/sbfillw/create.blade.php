@@ -1,47 +1,77 @@
-@extends('.layouts.app')
-@section('content')
-<div class="card card-default">
-    <div class="card-header">
-        <form class="form-inline">
-            <div class="pull-left">
-                <h2>{{$title}}</h2>
-            </div>
-        </form>
-    </div>
-    
-    @if ($errors->any())
-    <div class="alert alert-danger">
-        <strong>Whoops!</strong> There were some problems with your input.<br><br>
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-    @endif
+@section('plugins.Datatables', true)
 
-    <div class="card-body row g-3 form-group">
-        <form action="{{ route('sbfillw.store') }}" method="POST">
-            @csrf
-            <div class="input-group mb-3">
-                <span class="input-group-text">Keyword<span class="text-danger">*</span></span>
-                <input class="form-control" type="text" name="in_key" placeholder="Kata Kunci" value="{{ old('in_key') }}" />
+@extends('adminlte::page')
+
+@section('title', "Meikha GIA - $title")
+
+@section('content_header')
+<p />
+@stop
+
+@section('content')
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <form class="form-inline">
+                        <div class="pull-left">
+                            <h2>{{$title}}</h2>
+                        </div>
+                    </form>
+                </div>
+
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
+                <div class="card-body row g-3 form-group">
+                    <form action="{{ route('sbfillw.store') }}" method="POST">
+                        @csrf
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Keyword<span class="text-danger">*</span></span>
+                            <input class="form-control" type="text" name="in_key" placeholder="Kata Kunci"
+                                value="{{ old('in_key') }}" />
+                        </div>
+                        @csrf
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Rincian<span class="text-danger">*</span></span>
+                            <input class="form-control" type="text" name="in_detail" placeholder="Kata Kunci"
+                                value="{{ old('in_detail') }}" />
+                        </div>
+                        <div class="">
+                            <input class="form-check-input" type="radio" name="in_status" value="1" checked> <label
+                                class="form-check-label">Tersedia</label>
+                            <input class="form-check-input" type="radio" name="in_status" value="0"> <label
+                                class="form-check-label">Tidak Tersedia</label>
+                        </div>
+                        <div class="input-group mb-3 justify-content-center"">
+                            <button class=" btn btn-primary">Simpan</button>
+                            <a class="btn btn-danger" href="{{ url()->previous() }}">Kembali</a>
+                        </div>
+                    </form>
+
+                </div>
             </div>
-            @csrf
-            <div class="input-group mb-3">
-                <span class="input-group-text">Rincian<span class="text-danger">*</span></span>
-                <input class="form-control" type="text" name="in_detail" placeholder="Kata Kunci" value="{{ old('in_detail') }}" />
-            </div>
-            <div class="">
-                <input class="form-check-input" type="radio" name="in_status"  value="1" checked> <label class="form-check-label">Tersedia</label>
-                <input class="form-check-input" type="radio" name="in_status"  value="0"> <label class="form-check-label">Tidak Tersedia</label>
-            </div>
-            <div class="input-group mb-3 justify-content-center"">
-                <button class="btn btn-primary">Simpan</button>
-                <a class="btn btn-danger" href="{{ url()->previous() }}">Kembali</a>
-            </div>
-        </form>
-        
+        </div>
     </div>
 </div>
-@endsection
+@stop
+
+@section('css')
+{{--
+<link rel="stylesheet" href="/css/admin_custom.css"> --}}
+@stop
+
+@section('js')
+<script>
+    console.log('Hi!'); 
+</script>
+
+@stop
